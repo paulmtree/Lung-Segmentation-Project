@@ -1,0 +1,77 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf830
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red191\green100\blue38;\red32\green32\blue32;\red153\green168\blue186;
+\red254\green187\blue91;\red117\green114\blue185;\red86\green132\blue173;\red109\green109\blue109;\red149\green184\blue79;
+\red152\green54\blue29;}
+{\*\expandedcolortbl;;\csgenericrgb\c74902\c39216\c14902;\csgenericrgb\c12549\c12549\c12549;\csgenericrgb\c60000\c65882\c72941;
+\csgenericrgb\c99608\c73333\c35686;\csgenericrgb\c45882\c44706\c72549;\csgenericrgb\c33725\c51765\c67843;\csgenericrgb\c42745\c42745\c42745;\csgenericrgb\c58431\c72157\c30980;
+\csgenericrgb\c59608\c21176\c11373;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf2 \cb3 from \cf4 PIL \cf2 import \cf4 Image\
+\cf2 from \cf4 numpy \cf2 import \cf4 array\
+\cf2 import \cf4 os\
+\cf2 import \cf4 glob\
+\cf2 import \cf4 numpy \cf2 as \cf4 np\
+\
+\cf2 from \cf4 matplotlib \cf2 import \cf4 pyplot \cf2 as \cf4 plt\
+\cf2 from \cf4 PIL \cf2 import \cf4 ImageFilter\
+\
+\cf2 def \cf5 threshold_filter\cf4 (data\cf2 , \cf4 w\cf2 , \cf4 h):\
+    \cf2 for \cf4 i \cf2 in \cf6 range\cf4 (w):\
+        \cf2 for \cf4 j \cf2 in \cf6 range\cf4 (h):\
+            \cf2 if \cf4 (data[i][j] < \cf7 130\cf4 ):\
+                data[i][j] = \cf7 0\
+            \cf2 elif \cf4 (data[i][j] > \cf7 240\cf4 ):\
+                data[i][j] = \cf7 250\
+            \cf2 else\cf4 :\
+                data[i][j] = \cf7 180\
+    \cf2 return \cf4 data\
+\cf2 def \cf5 pointwise_transform\cf4 (data\cf2 , \cf4 w\cf2 , \cf4 h\cf2 , \cf4 T1\cf2 , \cf4 T2):\
+    slope = \cf7 255 \cf4 / (T2 - T1)\
+    output =  data\
+    \cf2 for \cf4 i \cf2 in \cf6 range\cf4 (w):\
+        \cf2 for \cf4 j \cf2 in \cf6 range\cf4 (h):\
+            \cf2 if \cf4 (data[i][j] < T1):\
+                output[i][j] = \cf7 0\
+            \cf2 elif \cf4 data[i][j] > T2:\
+                output[i][j] = \cf7 240\
+            \cf2 else\cf4 :\
+                output[i][j] = (data[i][j]*slope) - T1\
+    \cf2 return \cf4 output\
+\
+\cf8 #Set preconditions\
+\cf4 file_type = \cf9 'jpg'\
+\
+\cf2 for \cf4 f \cf2 in \cf4 glob.glob(\cf9 'ImageScans/*.\{\}'\cf4 .format(file_type)):\
+    \cf2 if \cf4 f.endswith(\cf9 '.jpg'\cf4 ) == \cf6 True\cf4 :\
+        img0 = Image.open(f).convert(\cf9 'L'\cf4 )\
+        img1 = img0\
+        fn\cf2 , \cf4 fext = os.path.splitext(f)\
+        \cf8 #img1 = img1.filter(ImageFilter.EDGE_ENHANCE)\
+        # image.show()\
+        #img1 = img1.filter(ImageFilter.MedianFilter(3))\
+        \cf4 data = array(img1)\
+        w\cf2 , \cf4 h = img1.size\
+\cf8 #data analytics\
+\
+        #data = threshold_filter(data, w, h)\
+        \cf4 data = pointwise_transform(data\cf2 , \cf4 w\cf2 , \cf4 h\cf2 , \cf7 70\cf2 , \cf7 200\cf4 )\
+        \cf8 # save image\
+        \cf4 img1 = Image.fromarray(data)\
+\
+\cf8 #Filter\
+        \cf4 img2 = img1.filter(ImageFilter.MedianFilter(\cf7 3\cf4 ))\
+        \cf8 #img3 = img2.filter(ImageFilter.FIND_EDGES)\
+        #img3 = img2.filter(ImageFilter.MedianFilter)\
+        \cf4 histogram = img2.histogram(\cf10 mask\cf4 =\cf6 None\cf2 , \cf10 extrema\cf4 =\cf6 None\cf4 )\
+        x = \cf6 range\cf4 (\cf7 0\cf2 , \cf7 256\cf4 )\
+        plt.plot(x\cf2 , \cf4 histogram)\
+        \cf8 #plt.show()\
+        \cf4 ID = fn.replace(\cf9 'ImageScans/'\cf2 , \cf9 ''\cf4 )\
+        \cf2 print\cf4 (ID)\
+        Image.fromarray(np.hstack((np.array(img0)\cf2 , \cf4 np.array(img1)\cf2 , \cf4 np.array(img2)))).show()\
+        Image.fromarray(np.hstack((np.array(img0)\cf2 , \cf4 np.array(img1)\cf2 , \cf4 np.array(img2)))).save(\cf9 "ImageScanResults/\{\}a.jpg"\cf4 .format(ID))\
+        \cf8 #img2.save("ImageScanResults/\{\}a.jpg".format(ID))\
+}
