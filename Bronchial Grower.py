@@ -167,4 +167,4 @@ sample_stack(imgs_to_process[seed_index])
 sample_stack(imgs_after_rg[seed_index])
 
 print("Saving To Numpy Array...")
-np.save(out_path + "bronchioles_after_rg_%d.npy" % (id),imgs_after_rg)
+np.save("bronchioles_after_rg_%d.npy" % (id),imgs_after_rg)
