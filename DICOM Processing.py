@@ -85,16 +85,16 @@ def resample(image, scan, new_spacing=[1, 1, 1]):
 
     return image, new_spacing
 def make_mesh(image, threshold=300, step_size=1):
-    print "Transposing surface"
+    print("Transposing surface")
     p = image.transpose(2, 1, 0)
 
-    print "Calculating surface"
+    print("Calculating surface")
     verts, faces, norm, val = measure.marching_cubes(p, threshold, step_size=step_size, allow_degenerate=True)
     return verts, faces
 def plotly_3d(verts, faces):
     x, y, z = zip(*verts)
 
-    print "Drawing"
+    print("Drawing")
 
     # Make the colormap single color since the axes are positional not intensity.
     #    colormap=['rgb(255,105,180)','rgb(255,255,51)','rgb(0,191,255)']
@@ -110,7 +110,7 @@ def plotly_3d(verts, faces):
                             title="Interactive Visualization")
     plot(fig)
 def plt_3d(verts, faces):
-    print "Drawing"
+    print("Drawing")
     x,y,z = zip(*verts)
     fig = plt.figure(figsize=(10, 10))
     ax = fig.add_subplot(111, projection='3d')
@@ -231,12 +231,12 @@ sample_stack(imgs_to_process, 5, 5, 20, 3)
 
 print("Data value imgs_to_process: {}" .format(imgs_to_process[15][100][100]))
 
-print "Slice Thickness: %f" % patient[0].SliceThickness
-print "Pixel Spacing (row, col): (%f, %f) " % (patient[0].PixelSpacing[0], patient[0].PixelSpacing[1])
+print("Slice Thickness: %f" % patient[0].SliceThickness)
+print("Pixel Spacing (row, col): (%f, %f) " % (patient[0].PixelSpacing[0], patient[0].PixelSpacing[1]))
 
-print "Shape before resampling\t", imgs_to_process.shape
+print("Shape before resampling\t", imgs_to_process.shape)
 imgs_after_resamp, spacing = resample(imgs_to_process, patient, [1,1,1])
-print "Shape after resampling\t", imgs_after_resamp.shape
+print("Shape after resampling\t", imgs_after_resamp.shape)
 
 print("Data Type: {}" .format(np.dtype(imgs_after_resamp[15][100][100])))
 print("Data value imgs_after_resamp: {}" .format(imgs_after_resamp[15][100][100]))
