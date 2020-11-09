@@ -12,12 +12,12 @@ Use CT scans of the lungs to generate 3D models of the airway, bronchioles, oute
 ---
 <img align="center" width="900"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/PP1.png">
 ---
-### Check lung mask and save files
+Check lung mask and save files
 ---
 <img align="center" width="900"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/Powerpoint1.gif">
 ---
 
-## RegionGrowerSmall.py
+RegionGrowerSmall.py
 ---
 <img align="center" width="900"  src="">
 ---
