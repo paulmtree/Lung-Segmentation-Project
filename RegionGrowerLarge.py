@@ -26,16 +26,16 @@ import scipy.ndimage
 from skimage import measure
 from PIL import ImageFilter
 def make_mesh(image, threshold=300, step_size=1):
-    print "Transposing surface"
+    print("Transposing surface")
     p = image.transpose(2, 1, 0)
 
-    print "Calculating surface"
+    print("Calculating surface")
     verts, faces, norm, val = measure.marching_cubes(p, threshold, step_size=step_size, allow_degenerate=True)
     return verts, faces
 def plotly_3d(verts, faces):
     x, y, z = zip(*verts)
 
-    print "Drawing"
+    print("Drawing")
 
     # Make the colormap single color since the axes are positional not intensity.
     #    colormap=['rgb(255,105,180)','rgb(255,255,51)','rgb(0,191,255)']
