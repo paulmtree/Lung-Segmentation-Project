@@ -62,7 +62,6 @@ With a small hole in our airway, our region growing algorithm spills into the lu
 
 ## Volume of Interest.py
 
----
 <img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/PP8.png">
 
 
