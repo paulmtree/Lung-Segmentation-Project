@@ -17,7 +17,6 @@ Use CT scans of the lungs to generate 3D models of the airway, bronchioles, oute
 
 ---
 <img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/Powerpoint1.gif">
----
 
 ## RegionGrowerSmall.py
 
@@ -49,9 +48,13 @@ With a small hole in our airway, our region growing algorithm spills into the lu
 <img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/PP4.png">
 ---
 
+## MeshlabVisualizer.py
+
 ---
 <img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/PP5.png">
 ---
+
+## Bronchial Grower.py
 
 ---
 <img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/PP6.png">
@@ -61,9 +64,13 @@ With a small hole in our airway, our region growing algorithm spills into the lu
 <img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/PP7.png">
 ---
 
+## Volume of Interest.py
+
 ---
 <img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/PP8.png">
 ---
+
+## Meshlab ROI.py
 
 ---
 <img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/PP9.png">

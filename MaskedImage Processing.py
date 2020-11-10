@@ -71,7 +71,7 @@ def show_4_images(imgs_to_process):
 
     sample_stack(test_images, 2, 2, 0, 1)
 def make_mesh(image, threshold = 300, step_size = 2):
-    print "Transposing surface"
+    print("Transposing surface")
     p = image.transpose(2, 1, 0)
     verts, faces, norm, val = measure.marching_cubes(p, threshold, step_size=step_size, allow_degenerate=True)
 
@@ -79,7 +79,7 @@ def make_mesh(image, threshold = 300, step_size = 2):
 def plot_3D(verts, faces):
     x, y, z = zip(*verts)
 
-    print "Drawing"
+    print("Drawing")
 
     # Make the colormap single color since the axes are positional not intensity.
     #    colormap=['rgb(255,105,180)','rgb(255,255,51)','rgb(0,191,255)']
