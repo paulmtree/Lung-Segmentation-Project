@@ -11,7 +11,7 @@ Use CT scans of the lungs to generate 3D models of the airway, bronchioles, oute
 6. Apply mask to each lung slice.
 ---
 <img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/PP1.png">
----
+
 
 ### Check lung mask and save files
 
@@ -22,65 +22,65 @@ Use CT scans of the lungs to generate 3D models of the airway, bronchioles, oute
 
 ---
 <img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/Powerpoint2.gif">
----
+
 
 ---
 <img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/Powerpoint3.gif">
----
+
 
 With a small hole in our airway, our region growing algorithm spills into the lungs. However with a larger region growing voxel (3D pixel), we won't have a leak. Below is the paper that describes this theory in region growing algorithms.
 
 ---
 <img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/PP3.png">
----
+
 
 ## RegionGrowerLarge.py
 
 ---
 <img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/Powerpoint4.gif">
----
+
 
 ---
 <img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/Powerpoint5.gif">
----
+
 
 ---
 <img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/PP4.png">
----
+
 
 ## MeshlabVisualizer.py
 
 ---
 <img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/PP5.png">
----
+
 
 ## Bronchial Grower.py
 
 ---
 <img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/PP6.png">
----
+
 
 ---
 <img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/PP7.png">
----
+
 
 ## Volume of Interest.py
 
 ---
 <img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/PP8.png">
----
+
 
 ## Meshlab ROI.py
 
 ---
 <img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/PP9.png">
----
+
 
 ---
 <img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/PP10.png">
----
+
 
 ---
 <img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/PP11.png">
----
+
 
