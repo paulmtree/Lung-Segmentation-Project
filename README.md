@@ -1,5 +1,5 @@
 # Lung-Segmentation-Project
-Use CT scans of the lungs to generate 3D models of the airway, bronchioles, outer lung structure, and cancerous growths. Mathematical descriptions of these objects can be used for AI research and predicting benign vs malignant tumors and prevent unnecessary and harsh cancer treatments.
+Use CT scans of the lungs to generate 3D models of the airway, bronchioles, outer lung structure, and cancerous growths. Mathematical descriptions of these objects can be used for AI research, such as predicting benign vs malignant tumors to prevent unnecessary and invasive cancer treatments, early recognition of tumors, and modeling the growth rate of tumors.
 ### License 
 See the [LICENSE](https://github.com/paulmtree/Lung-Segmentation-Project/blob/main/LICENSE.md) file for license rights and limitations (MIT). If this code was useful for you, please let me know via email at pkm29@case.edu so I can brag about it. 
 # Intro
