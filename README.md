@@ -1,7 +1,10 @@
 # Lung-Segmentation-Project
 Use CT scans of the lungs to generate 3D models of the airway, bronchioles, outer lung structure, and cancerous growths. Mathematical descriptions of these objects can be used for AI research and predicting benign vs malignant tumors.
-
-## DICOM Processing.py
+### License 
+See the [LICENSE](https://github.com/paulmtree/Lung-Segmentation-Project/blob/main/LICENSE.md) file for license rights and limitations (MIT). If this code was useful for you, please let me know via email at pkm29@case.edu so I can brag about my project. 
+# Intro
+Each slide corresponds to a python file used to generate the slides content. You can find these slides in this [Powerpoint Presentation](https://github.com/paulmtree/Lung-Segmentation-Project/blob/main/Powerpoint%20Images/Image%20Segmentation_%20Paul%20McCabe%20(3).pptx). (MeshlabVisualizer.py is used on a couple different slides)
+## [DICOM Processing.py](https://github.com/paulmtree/Lung-Segmentation-Project/blob/main/DICOM%20Processing.py)
 ### Import lung slices and create lung mask
 1. Import DICOM images and convert to numpy arrays.
 2. Use Kmeans thresholding to display empty space as white and non-empty space as black. 
@@ -18,7 +21,7 @@ Use CT scans of the lungs to generate 3D models of the airway, bronchioles, oute
 
 <img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/Powerpoint1.gif">
 
-## RegionGrowerSmall.py
+## [RegionGrowerSmall.py](https://github.com/paulmtree/Lung-Segmentation-Project/blob/main/RegionGrowerSmall.py)
 
 
 <img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/Powerpoint2.gif">
@@ -33,7 +36,7 @@ With a small hole in our airway, our region growing algorithm spills into the lu
 <img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/PP3.png">
 
 
-## RegionGrowerLarge.py
+## [RegionGrowerLarge.py](https://github.com/paulmtree/Lung-Segmentation-Project/blob/main/RegionGrowerLarge.py)
 
 <img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/Powerpoint4.gif">
 
@@ -46,12 +49,12 @@ With a small hole in our airway, our region growing algorithm spills into the lu
 <img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/PP4.png">
 
 
-## MeshlabVisualizer.py
+## [MeshlabVisualizer.py](https://github.com/paulmtree/Lung-Segmentation-Project/blob/main/MeshLabVisualizer.py)
 
 <img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/PP5.png">
 
 
-## Bronchial Grower.py
+## [Bronchial Grower.py](https://github.com/paulmtree/Lung-Segmentation-Project/blob/main/Bronchial%20Grower.py)
 
 <img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/PP6.png">
 
@@ -60,12 +63,12 @@ With a small hole in our airway, our region growing algorithm spills into the lu
 <img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/PP7.png">
 
 
-## Volume of Interest.py
+## [Volume of Interest.py](https://github.com/paulmtree/Lung-Segmentation-Project/blob/main/Volume%20of%20Interest.py)
 
 <img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/PP8.png">
 
 
-## Meshlab ROI.py
+## [Meshlab ROI.py](https://github.com/paulmtree/Lung-Segmentation-Project/blob/main/Meshlab%20ROI.py)
 
 
 <img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/PP9.png">
