@@ -3,7 +3,7 @@ Use CT scans of the lungs to generate 3D models of the airway, bronchioles, oute
 ### License 
 See the [LICENSE](https://github.com/paulmtree/Lung-Segmentation-Project/blob/main/LICENSE.md) file for license rights and limitations (MIT). If this code was useful for you, please let me know via email at pkm29@case.edu so I can brag about it. 
 # Intro
-This project was part of my research at the Center for Computational Imaging and Personalized Diagnostics (CCIPD) lab under Dr. Mehdi Alilou at Case Western Reserve University in 2019. This was also my first experience with Python and took approximately 2 months. Each slide corresponds to a python file used to generate the slides content. You can find these slides in this [Powerpoint Presentation](https://github.com/paulmtree/Lung-Segmentation-Project/blob/main/Powerpoint%20Images/Image%20Segmentation_%20Paul%20McCabe%20(3).pptx). (MeshlabVisualizer.py is used on a couple different slides)
+(3-5 minute read) This project was part of my research at the Center for Computational Imaging and Personalized Diagnostics (CCIPD) lab under Dr. Mehdi Alilou at Case Western Reserve University in 2019. This was also my first experience with Python and took approximately 2 months. Each slide corresponds to a python file used to generate the slides content. You can find these slides in this [Powerpoint Presentation](https://github.com/paulmtree/Lung-Segmentation-Project/blob/main/Powerpoint%20Images/Image%20Segmentation_%20Paul%20McCabe%20(3).pptx). (MeshlabVisualizer.py is used on a couple different slides)
 ## [DICOM Processing.py](https://github.com/paulmtree/Lung-Segmentation-Project/blob/main/DICOM%20Processing.py)
 ### Import lung slices and create lung mask
 1. Import DICOM images and convert to numpy arrays.
