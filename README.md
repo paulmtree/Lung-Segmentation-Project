@@ -1,5 +1,5 @@
 # Lung-Segmentation-Project (≈ 5 minute read)
-Use CT scans of the lungs to generate 3D models of the airway, bronchioles, outer lung structure, and cancerous growths. Mathematical descriptions of these objects can be used for AI research, such as predicting benign vs malignant tumors to prevent unnecessary and invasive cancer treatments, early recognition of tumors, and modeling the growth rate of tumors.
+This project uses a process known as segmentation extract and generate 3D models of the airway, bronchioles, outer lung structure, and cancerous growths seperately. Mathematical descriptions of these objects can be used for AI research, such as predicting benign vs malignant tumors to prevent unnecessary and invasive cancer treatments, early recognition of tumors, and modeling the growth rate of tumors.
 ### License 
 See the [LICENSE](https://github.com/paulmtree/Lung-Segmentation-Project/blob/main/LICENSE.md) file for license rights and limitations (MIT). If this code was useful for you, please let me know via email at pkm29@case.edu so I can brag about it. 
 # Intro
@@ -40,16 +40,14 @@ While some papers recommend using Gaussian filters to smooth over leaks from the
 <img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/PP3.png">
 
 ## Use a region growing algorithm to extract just the airway (works!)
-
-Now with the large voxel growing size.
-
 ### [RegionGrowerLarge.py](https://github.com/paulmtree/Lung-Segmentation-Project/blob/main/RegionGrowerLarge.py)
+Now with the large voxel growing size.
 
 <img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/Powerpoint4.gif">
 
-
 ##
 And voila, no leaks! 
+
 <img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/Powerpoint5.gif">
 
 
@@ -78,7 +76,7 @@ Forrunately, I found a solution that utilizes both techniques. A check is set so
 With the check in place, our seed point should change until a suitable seed is found. 
 ##
 
-<img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/PP6.pdf">
+<img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/PP6.png">
 
 
 ##
@@ -90,20 +88,25 @@ The bronchial growing algorithm works for all 3 patients seamlessly and is shown
 ### [Volume of Interest.py](https://github.com/paulmtree/Lung-Segmentation-Project/blob/main/Volume%20of%20Interest.py)
 To model a cancerous growth seperately, a simple approach requires the user to input a slice number and 2 x,y coordinates to form a region of interest around the tumor. Advanced ML algorithms, specifically the field of machine vision, is capable of finding these growths automatically as well. 
 
+Interestingly, we find that when we dilated our CT scans to create the walls of our lung regions at the beginning, our program included the tumor as part of the lung wall as indicated by the unusually uniform indent. This phenomenon remains a current problem for tumor recognition and modeling and will be part of future work as mentioned at the end of this presentation.
+
 <img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/PP8.png">
 
 
-## [Meshlab ROI.py](https://github.com/paulmtree/Lung-Segmentation-Project/blob/main/Meshlab%20ROI.py)
-
+## Extract the tumor and place it in the overall lung structure as a seperate entity
+### [Meshlab ROI.py](https://github.com/paulmtree/Lung-Segmentation-Project/blob/main/Meshlab%20ROI.py)
+For our last region growing application, we use the large growing voxel (RegionGrowerLarge.py) so that we do not spread from the tumor to a nearby bronchial. Then place it back into our lung structure and create a 3D model with all of our segmented components.
 
 <img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/PP9.png">
 
 
-##
+### Summary of future Work
+
 <img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/PP10.png">
 
 
-##
+### Sources
+
 <img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/PP11.png">
 
 
