@@ -1,5 +1,9 @@
-# Lung-Segmentation-Project (≈ 5 minute read)
-This project uses a process known as segmentation extract and generate 3D models of the airway, bronchioles, outer lung structure, and cancerous growths seperately. Mathematical descriptions of these objects can be used for AI research, such as predicting benign vs malignant tumors to prevent unnecessary and invasive cancer treatments, early recognition of tumors, and modeling the growth rate of tumors.
+# Lung-Segmentation-Project (≈ 5-10 minute read)
+This project uses a process known as segmentation to extract individual lung components from CT scans such as the airway, bronchioles, outer lung structure, and cancerous growths. Mathematical descriptions of these objects can be used for AI research, such as predicting benign vs malignant tumors to prevent unnecessary and invasive cancer treatments, early recognition of tumors, and modeling the growth rate of tumors. The final result of this segmentation project is shown below:
+
+<img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/PP9.png">
+
+
 ### License 
 See the [LICENSE](https://github.com/paulmtree/Lung-Segmentation-Project/blob/main/LICENSE.md) file for license rights and limitations (MIT). If this code was useful for you, please let me know via email at pkm29@case.edu so I can brag about it. 
 # Intro
