@@ -1,7 +1,7 @@
 # Lung-Segmentation-Project (≈ 5-10 minute read)
 This project uses a process known as segmentation to extract individual lung components from CT scans such as the airway, bronchioles, outer lung structure, and cancerous growths. Mathematical descriptions of these objects can be used for AI research, such as predicting benign vs malignant tumors to prevent unnecessary and invasive cancer treatments, early recognition of tumors, and modeling the growth rate of tumors. The final result of this segmentation project is shown below:
 
-<img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/PP9.png">
+<img align="center" width="300"  src="https://github.com/paulmtree/Lung-Segmentation-Project/blob/main/Powerpoint%20Images/Lung.gif">
 
 
 ### License 
@@ -71,8 +71,8 @@ To extract our bronchials, the branches that fill up our lungs, we can use the s
 
 Unlike the airway however, we cannot simply use the median/center position of our particular material, since the bronchials are less uniform and contain regions of dark space where if the seed point was placed there, it would not grow at all. However the advantage of using the center position approach is that the seed lands in the center of our mass and not on some isolated but also bright pixel created by noise. 
 
-Forrunately, I found a solution that utilizes both techniques. A check is set so that if the seed point landed in a dark area, change the selected brightness of the material that I find the center of. Here is an example:
-1. Select a middle slice of the scan where we expect the bronchails to be prominant and remove the edges of our lung through erosion. (This doesn't need to be done each time, just an approximate middle)
+Forrunately, I found a solution that utilizes both techniques. A check is set so that if the seed point landed in a dark area, change the selected brightness of the material that the algorithm finds the center of. Here is an example of this process:
+1. Select a middle slice of the scan where we expect the bronchails to be prominant and remove the edges of our lung through erosion. (This doesn't need to be done each time, just an approximate middle middle slice like 160/300 slices)
 2. Threshold the image for a brightness value greater than 210. (255 being pure white)
 3. Find the median or center position of this thresholded image and check if that location is in a light or a dark area. 
 4. If the median position lands in a dark area, change our thresholded image to be for a brightness greater than 215. 
@@ -90,9 +90,9 @@ The bronchial growing algorithm works for all 3 patients seamlessly and is shown
 
 ## Define a volume of interest such as a tumor and extract it from the lungs
 ### [Volume of Interest.py](https://github.com/paulmtree/Lung-Segmentation-Project/blob/main/Volume%20of%20Interest.py)
-To model a cancerous growth seperately, a simple approach requires the user to input a slice number and 2 x,y coordinates to form a region of interest around the tumor. Advanced ML algorithms, specifically the field of machine vision, is capable of finding these growths automatically as well. 
+To model a cancerous growth seperately, our simplistic approach requires the user to input a slice number and 2 x,y coordinates to form a region of interest around the tumor. Advanced ML algorithms, specifically the field of machine vision, are capable of finding these growths automatically as well. 
 
-Interestingly, we find that when we dilated our CT scans to create the walls of our lung regions at the beginning, our program included the tumor as part of the lung wall as indicated by the unusually uniform indent. This phenomenon remains a current problem for tumor recognition and modeling and will be part of future work as mentioned at the end of this presentation.
+Interestingly, we find that when we dilated our CT scans to create the walls of our lung regions at the beginning, our program included the tumor as part of the lung wall as indicated by the unusually uniform indent. WHere does the tumor end and the wall of the lungs begin? This phenomenon remains a current problem for tumor recognition and modeling and will be part of future work as mentioned at the end of this presentation.
 
 <img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/PP8.png">
 
