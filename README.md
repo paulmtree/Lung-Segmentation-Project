@@ -6,10 +6,11 @@ This project uses a process known as segmentation to extract individual lung com
 
 ### License 
 See the [LICENSE](https://github.com/paulmtree/Lung-Segmentation-Project/blob/main/LICENSE.md) file for license rights and limitations (MIT). If this code was useful for you, please let me know via email at pkm29@case.edu so I can brag about it. 
-# Intro
+# Introduction
 This project was part of my research at the Center for Computational Imaging and Personalized Diagnostics (CCIPD) lab under Dr. Mehdi Alilou at Case Western Reserve University in 2019. This was also my first experience with Python and took approximately 2 months. Each slide corresponds to a python file used to generate the slides content. You can find these slides in this [Powerpoint Presentation](https://github.com/paulmtree/Lung-Segmentation-Project/blob/main/Powerpoint%20Images/Image%20Segmentation_%20Paul%20McCabe%20(3).pptx). (MeshlabVisualizer.py is used on a couple different slides)
 ## Import lung slices and filter out the lung and airway region for each slice
 ### [DICOM Processing.py](https://github.com/paulmtree/Lung-Segmentation-Project/blob/main/DICOM%20Processing.py)
+First we will use the DICOM Processing.py script to import our CT scans, which are DICOM files containg slice numbers and other metrics, and process them for segmentation. Below is a description of the script's processes and outputs. 
 1. Import DICOM images and convert to numpy arrays.
 2. Use Kmeans thresholding to display empty space as white and non-empty space as black. 
 3. Erode away the finer details and dilate to return to former size.
@@ -24,7 +25,7 @@ This project was part of my research at the Center for Computational Imaging and
 
 <img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/Powerpoint1.gif">
 
-## Use a region growing algorithm to extract just the airway (doesn't work)
+## Use a small region growing algorithm to extract just the airway (doesn't work)
 
 ### [RegionGrowerSmall.py](https://github.com/paulmtree/Lung-Segmentation-Project/blob/main/RegionGrowerSmall.py)
 
@@ -43,7 +44,7 @@ While some papers recommend using Gaussian filters to smooth over leaks from the
 
 <img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/PP3.png">
 
-## Use a region growing algorithm to extract just the airway (works!)
+## Use a large region growing algorithm to extract just the airway (works!)
 ### [RegionGrowerLarge.py](https://github.com/paulmtree/Lung-Segmentation-Project/blob/main/RegionGrowerLarge.py)
 Now with the large voxel growing size.
 
@@ -67,12 +68,12 @@ Further inspection of the airway illustrates the revised algorithm is of suffici
 
 ## Use the smaller region growing algorithm to extract the bronchials from the lungs
 ### [Bronchial Grower.py](https://github.com/paulmtree/Lung-Segmentation-Project/blob/main/Bronchial%20Grower.py)
-To extract our bronchials, the branches that fill up our lungs, we can use the smaller growing voxel algorithm (RegionGrowerSmall.py). However since the 2 bronchial groups are not connected to each other, it is necessary to have 2 seed points. Using scimage measuring tools as we did when creating the mask and labeling regions in step 4 of DICOM Processing.py, we can approach the left and right lung seperately to determine a seed point automatically. We also do not want our algorithm to grow to the walls of the lungs as they are similiarly colored, so we erode away the walls of the lungs. 
+To extract our bronchials, the branches that fill up our lungs, we can use the smaller growing voxel algorithm (RegionGrowerSmall.py). However since the 2 bronchial groups are not connected to each other, it is necessary to have 2 seed points. Using scimage measuring tools as we did when creating the mask and labeling regions in step 4 of DICOM Processing.py, we can approach the left and right lung separately to determine a seed point automatically. We also do not want our algorithm to grow to the walls of the lungs as they are similiarly colored, so we erode away the walls of the lungs. 
 
 Unlike the airway however, we cannot simply use the median/center position of our particular material, since the bronchials are less uniform and contain regions of dark space where if the seed point was placed there, it would not grow at all. However the advantage of using the center position approach is that the seed lands in the center of our mass and not on some isolated but also bright pixel created by noise. 
 
-Forrunately, I found a solution that utilizes both techniques. A check is set so that if the seed point landed in a dark area, change the selected brightness of the material that the algorithm finds the center of. Here is an example of this process:
-1. Select a middle slice of the scan where we expect the bronchails to be prominant and remove the edges of our lung through erosion. (This doesn't need to be done each time, just an approximate middle middle slice like 160/300 slices)
+Fortunately, I found a solution that utilizes both techniques. A check is set so that if the seed point landed in a dark area, change the selected brightness of the material that the algorithm finds the center of. This changes the shape of our bronchials slightly and should yield a slightly different seed point until a satisfactory one is found. Here is an example of this recursive process:
+1. Select a middle slice of the scan where we expect the bronchials to be prominant and remove the edges of our lung through erosion. (This doesn't need to be done each time, just an approximate middle slice like number 160 out of 300 slices)
 2. Threshold the image for a brightness value greater than 210. (255 being pure white)
 3. Find the median or center position of this thresholded image and check if that location is in a light or a dark area. 
 4. If the median position lands in a dark area, change our thresholded image to be for a brightness greater than 215. 
@@ -90,16 +91,16 @@ The bronchial growing algorithm works for all 3 patients seamlessly and is shown
 
 ## Define a volume of interest such as a tumor and extract it from the lungs
 ### [Volume of Interest.py](https://github.com/paulmtree/Lung-Segmentation-Project/blob/main/Volume%20of%20Interest.py)
-To model a cancerous growth seperately, our simplistic approach requires the user to input a slice number and 2 x,y coordinates to form a region of interest around the tumor. Advanced ML algorithms, specifically the field of machine vision, are capable of finding these growths automatically as well. 
+To model a cancerous growth separately, our simplistic approach requires the user to input a slice number and 2 x,y coordinates to form a region of interest around the tumor. Advanced ML algorithms, specifically the field of machine vision, are capable of finding these growths automatically as well. 
 
-Interestingly, we find that when we dilated our CT scans to create the walls of our lung regions at the beginning, our program included the tumor as part of the lung wall as indicated by the unusually uniform indent. WHere does the tumor end and the wall of the lungs begin? This phenomenon remains a current problem for tumor recognition and modeling and will be part of future work as mentioned at the end of this presentation.
+Interestingly, we find that when we dilated our CT scans to create the walls of our lung regions at the beginning, our program included the tumor as part of the lung wall as indicated by the unusually uniform indent. Where does the tumor end and the wall of the lungs begin? This phenomenon remains a current problem for tumor recognition and modeling and will be part of future work as mentioned at the end of this presentation.
 
 <img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/PP8.png">
 
 
-## Extract the tumor and place it in the overall lung structure as a seperate entity
+## Extract the tumor and place it in the overall lung structure as a separate entity
 ### [Meshlab ROI.py](https://github.com/paulmtree/Lung-Segmentation-Project/blob/main/Meshlab%20ROI.py)
-For our last region growing application, we use the large growing voxel (RegionGrowerLarge.py) so that we do not spread from the tumor to a nearby bronchial. Then place it back into our lung structure and create a 3D model with all of our segmented components.
+For our last region growing application, we use the large growing voxel (RegionGrowerLarge.py) so that we do not spread from the tumor to a nearby bronchial. We can then place it back into our lung structure and create a 3D model with all of our segmented components!
 
 <img align="center" width="960"  src="https://github.com/paulmtree/Lung-Segmentation-Project/raw/main/Powerpoint%20Images/PP9.png">
 
