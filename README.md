@@ -3,6 +3,8 @@ This project uses a process known as segmentation to extract individual lung com
 
 <img align="center" width="300"  src="https://github.com/paulmtree/Lung-Segmentation-Project/blob/main/Powerpoint%20Images/Lung.gif">
 
+### Please Note
+Anyone looking to use this code, I highly recommend using Howard Chen's article: https://www.raddq.com/dicom-processing-segmentation-visualization-in-python/ for the first few steps of the process. This code may be outdated/depreciated by the time you read it however the approaches I use should still work. 
 
 ### License 
 See the [LICENSE](https://github.com/paulmtree/Lung-Segmentation-Project/blob/main/LICENSE.md) file for license rights and limitations (MIT). If this code was useful for you, please let me know via email at pkm29@case.edu so I can brag about it. 
